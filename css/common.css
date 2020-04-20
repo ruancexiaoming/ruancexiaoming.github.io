@@ -1,0 +1,33 @@
+.rcxm-row{
+	width: 100%;
+	display:flex;
+	flex-direction: row;
+}
+.rcxm-column{
+	display:flex;
+	flex-direction: column;
+}
+.rcxm-jc-right{
+	justify-content:flex-end;
+}
+.rcxm-jc-center{
+	justify-content:center;
+}
+.rcxm-jc-around{
+	justify-content:space-around;
+}
+.rcxm-jc-between{
+	justify-content:space-between;
+}
+.rcxm-wrap{
+	flex-wrap: wrap;
+}
+.rcxm-nowrap{
+	flex-wrap: nowrap;
+}
+.rcxm-ai-center{
+	align-items:center;
+}
+.rcxm-ai-end{
+	align-items:flex-end;
+}

@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>实用网站</title>
+		<script src="./js/vue.min.js" type="text/javascript" charset="utf-8"></script>
+		<style type="text/css">
+			* {
+				margin: 0;
+				padding: 0;
+			}
+
+			#app {
+				display: flex;
+				width: 100vw;
+				height: 100vh;
+				justify-content: center;
+				align-items: center;
+				flex-direction: column;
+				background-color: #1144AA;
+				/* background: linear-gradient(45deg, #1144AA 25%, #05296E 0, #05296E 50%, #1144AA 0, #1144AA 75%, #05296E 0);
+				background-size: 30px 30px; */
+			}
+
+			.m1,
+			.m2,
+			.m3,
+			.m5,
+			.m6,
+			.m4 {
+				display: flex;
+				flex-direction: column;
+				width: 30vw;
+				background-color: #EEEEEE;
+				margin-top: 15px;
+				margin-bottom: 15px;
+			}
+
+			.title {
+				font-weight: 900;
+				font-size: 2rem;
+				background-color: #ff6f00;
+				color: white;
+				text-align: center;
+			}
+
+			.span {
+				padding: 15px;
+			}
+
+			a {
+				text-decoration: none;
+			}
+
+			a:link {
+				color: blue
+			}
+
+			/* 未被访问的链接 蓝色 */
+			a:visited {
+				color: blue
+			}
+
+			/* 已被访问过的链接 蓝色 */
+			a:hover {
+				color: blue
+			}
+
+			/* 鼠标悬浮在上的链接 蓝色 */
+			a:active {
+				color: blue
+			}
+
+			/* 鼠标点中激活链接 蓝色 */
+			.bg1 {
+				background-color: #FFD100;
+				color: #0E0E0E;
+			}
+
+			.bg1>a {
+				color: #0E0E0E;
+			}
+			.bg2 {
+				background-color: #FFE573;
+				color: #BFA530;
+			}
+			.bg2>a {
+				color: #BFA530;
+			}
+
+			.container {
+				overflow-y: scroll;
+			}
+
+			.container::-webkit-scrollbar {
+				width: 0px;
+				height: 2px;
+				background: white;
+				border-radius: 10px;
+				/*外层轨道*/
+			}
+
+			.container::-webkit-scrollbar-thumb {
+				display: block;
+				width: 5px;
+				margin: 0 auto;
+				border-radius: 10px;
+				background: lightblue;
+				/*内层轨道*/
+			}
+			span{
+				word-wrap: break-all;
+				word-break: normal;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="app">
+			<div class="container">
+				<div class="m1">
+					<div class="title">
+						工具网址大全
+					</div>
+					<span class="span" v-for="(item,index) in website" :class="{bg1:index%2==0,bg2:index%2!=0}">
+						<a :href="item.path" target="_blank">{{index+1}}-{{item.name}}</a>
+					</span>
+				</div>
+				<div class="m2">
+					<div class="title">
+						电影视频网址<br>
+					</div>
+					<span class="span" v-for="(item,index) in movieWebsite" :class="{bg1:index%2==0,bg2:index%2!=0}">
+						<a :href="item.path" target="_blank">{{index+1}}-{{item.name}}</a>
+					</span>
+				</div>
+				<div class="m3">
+					<div class="title">
+						电影<br>
+					</div>
+					<span class="span" v-for="(item,index) in teleplay" :class="{bg1:index%2==0,bg2:index%2!=0}">
+						{{index+1}}-{{item}}
+					</span>
+				</div>
+				<div class="m4">
+					<div class="title">
+						电视剧<br>
+					</div>
+					<span class="span" v-for="(item,index) in movie" :class="{bg1:index%2==0,bg2:index%2!=0}">
+						{{index+1}}-{{item}}
+					</span>
+				</div>
+				<div class="m5">
+					<div class="title">
+						工具<br>
+					</div>
+					<span class="span" v-for="(item,index) in tool" :class="{bg1:index%2==0,bg2:index%2!=0}">
+						{{index+1}}-{{item}}
+					</span>
+				</div>
+				<div class="m6">
+					<div class="title">
+						工具<br>
+					</div>
+					<span class="span" style="padding: 15px;" v-for="(item,index) in toolsite" :class="{bg1:index%2==0,bg2:index%2!=0}">
+						{{index+1}}-{{item.name}}<br>{{item.path}}
+					</span>
+				</div>
+				
+			</div>
+
+		</div>
+		<script type="text/javascript">
+			var app = new Vue({
+				el: '#app',
+				data: {
+					teleplay: ["西行纪之再见悟空", "民间奇异志", "赌博默示录","愤怒的小孩","妖铃铃","神盾特工局"],
+					movie: ["我的刺猬女孩","大神猴"],
+					tool: ["grafana+prometheus"],
+					movieWebsite: [{
+							name: "小二赚电影院",
+							path: "http://xiaoerzhuan.cc/index.php"
+						},
+						{
+							name: "哔哩哔哩动画",
+							path: "https://www.bilibili.com"
+						},
+					],
+					website: [{
+							name: "npm包查找",
+							path: "https://www.npmjs.com/"
+						},
+						{
+							name: "vue-router的API",
+							path: "https://router.vuejs.org/zh/api/#router-link"
+						},
+						{
+							name: "ESLint规则",
+							path: "https://eslint.bootcss.com/docs/rules/"
+						},
+						{
+							name: "Element组件",
+							path: "https://element.eleme.cn/#/zh-CN/component/transition"
+						},
+						{
+							name: "设计师网址大全",
+							path: "http://www.qingnian8.com/"
+						},
+						{
+							name: "网站配色",
+							path: "http://www.peise.net/tools/web/"
+						},
+						{
+							name: "CDR转AI",
+							path: "https://convertio.co/zh/cdr-ai/"
+						},
+						{
+							name: "腾讯地图坐标定位",
+							path: 'https://3gimg.qq.com/lightmap/v1/wxmarker/index.html?marker=coord:23.780799,114.735492;title:%E6%B2%B3%E6%BA%90%E4%B8%87%E8%BE%BE%E5%B9%BF%E5%9C%BA%E8%90%A5%E9%94%80%E4%B8%AD%E5%BF%83;addr:%E6%B2%B3%E6%BA%90%E5%B8%82%E6%B7%B1%E4%B8%9A%E8%B7%AF%E4%B8%8E%E4%B8%9C%E6%B1%9F%E5%A4%A7%E9%81%93%E4%BA%A4%E6%B1%87%E5%A4%84&referer=wexinmp_profile'
+						},
+						{
+							name: "免扣png素材网1",
+							path: 'http://pngimg.com/'
+						},
+						{
+							name: "免扣png素材网2",
+							path: 'https://www.stickpng.com'
+						},
+						
+					],
+					toolsite: [{
+							name: "音乐排行榜接口",
+							path: "https://api.apiopen.top/musicRankings"
+						},
+						{
+							name: "音乐排行榜详情接口",
+							path: "https://api.apiopen.top/musicRankingsDetails?type=1"
+						},
+						{
+							name: "每日视频推荐接口",
+							path: "https://api.apiopen.top/todayVideo"
+						},
+						{
+							name: "视频大纲获取接口： （重点，可用于顶部导航栏）",
+							path: "https://api.apiopen.top/videoHomeTab"
+						},
+						{
+							name: "视频分类推荐接口",
+							path: "https://api.apiopen.top/videoCategory"
+						},
+						{
+							name: "视频分类推荐接口：（重点，里面有上个借口的详情视频）",
+							path: "https://api.apiopen.top/videoCategoryDetails?id=14"
+						}
+					]
+				}
+			})
+		</script>
+	</body>
+</html>
